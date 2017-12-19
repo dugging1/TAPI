@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TAPI_Library.Properties;
 
 namespace TAPI_Library {
 	public enum DebugEntryType { INFO, WARNING, ERROR, MESSAGE }
