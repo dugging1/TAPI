@@ -12,16 +12,19 @@ namespace TAPI_Library {
 	public class DebugEntryController:Panel {
 		List<DebugEntry> Entries = new List<DebugEntry>();
 
-		public DebugEntryController(Control P) {
+		int backlogLimit;
+
+		public DebugEntryController(Control P, int limit=127) {
 			Parent=P;
 			Dock = DockStyle.Fill;
 			VScroll = true;
 			AutoScroll = true;
+			backlogLimit = limit;
 		}
 
 		public void AddEntry(DebugEntry e) {
+			if (Entries.Count == backlogLimit) Entries.RemoveAt(0);
 			Entries.Add(e);
-
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {

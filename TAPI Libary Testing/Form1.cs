@@ -18,7 +18,7 @@ namespace TAPI_Libary_Testing {
 
 		private DebugEntryController dec;
 		private void Form1_Load(object sender, EventArgs e) {
-			dec = new DebugEntryController(this);
+			dec = new DebugEntryController(this, 4);
 
 			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
 			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE"));
