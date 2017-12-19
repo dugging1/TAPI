@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAPI", "TAPI\TAPI.csproj", "{49DFF116-A0B3-47BD-A430-4F8FB8BA91AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontTesting", "FontTesting\FontTesting.csproj", "{32502669-0CFD-4C6C-80EA-58004CAE1AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAPI Library", "TAPI Library\TAPI Library.csproj", "{E58E5430-E9D5-40DB-8860-C7213D4B260A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49DFF116-A0B3-47BD-A430-4F8FB8BA91AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DFF116-A0B3-47BD-A430-4F8FB8BA91AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DFF116-A0B3-47BD-A430-4F8FB8BA91AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DFF116-A0B3-47BD-A430-4F8FB8BA91AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32502669-0CFD-4C6C-80EA-58004CAE1AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32502669-0CFD-4C6C-80EA-58004CAE1AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32502669-0CFD-4C6C-80EA-58004CAE1AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32502669-0CFD-4C6C-80EA-58004CAE1AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E58E5430-E9D5-40DB-8860-C7213D4B260A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E58E5430-E9D5-40DB-8860-C7213D4B260A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E58E5430-E9D5-40DB-8860-C7213D4B260A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E58E5430-E9D5-40DB-8860-C7213D4B260A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8750624-1625-4BF0-AF4E-D31729FDDC03}
+	EndGlobalSection
+EndGlobal
