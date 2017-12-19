@@ -38,9 +38,26 @@ namespace TAPI_Library {
 
 		public Size MinimumSize {
 			get { return master.MinimumSize; }
-			set { master.MinimumSize = value; }
+			set { master.MinimumSize = value;Resize(); }
+		}
+		public Size Size {
+			get { return master.Size; }
+			set { master.Size = value;Resize(); }
+		}
+		public Point Location {
+			get { return master.Location; }
+			set { master.Location = value; }
 		}
 
+		/// <summary>
+		/// The constructor for the entry.
+		/// </summary>
+		/// <param name="P">The parent control</param>
+		/// <param name="img">The icon for the message</param>
+		/// <param name="name">The name of the sender</param>
+		/// <param name="mess">The message</param>
+		/// <param name="T">The type of message</param>
+		/// <param name="time">The time the message was sent</param>
 		public DebugEntry(Control P, Image img, string name, string mess, DebugEntryType T, string time) {
 			type = T;
 
@@ -48,7 +65,7 @@ namespace TAPI_Library {
 				Parent = P,
 				AutoSize = true,
 				AutoSizeMode = AutoSizeMode.GrowAndShrink,
-				MinimumSize = new Size(64*8, 64*3),
+				MinimumSize = new Size(64*8, 64*2),
 				BorderStyle = BorderStyle.Fixed3D,
 				BackColor = Color.DarkGray
 			};
@@ -135,6 +152,19 @@ namespace TAPI_Library {
 				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX, messagePanel.Height),
 				ScrollBars = RichTextBoxScrollBars.Vertical
 			};
+		}
+
+		/// <summary>
+		/// A method to resize the control after the size has been changed(shouldn't need to be called explicitly).
+		/// </summary>
+		public void Resize() {
+			textPanel.Size = new Size(master.Width-icon.Width, master.Height);
+			namePanel.Size = new Size(textPanel.Width, 16);
+			name.Size = new Size(namePanel.Width-nameLabel.Width-separationDistX, 16);
+			Time.Size = new Size(textPanel.Width-(TimeLabel.Width+separationDistX), 16);
+			EType.Size = new Size(textPanel.Width-(ETypeLabel.Width+separationDistX), 16);
+			messagePanel.Size = new Size(master.Width-icon.Width, master.Height-(EType.Location.Y+separationDistY));
+			message.Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX, messagePanel.Height);
 		}
 	}
 }

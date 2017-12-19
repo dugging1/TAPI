@@ -16,10 +16,19 @@ namespace TAPI_Libary_Testing {
 			InitializeComponent();
 		}
 
-		private DebugEntry de;
+		private DebugEntryController dec;
 		private void Form1_Load(object sender, EventArgs e) {
+			dec = new DebugEntryController(this);
+
 			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
-			de = new DebugEntry(this, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE");
+			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE"));
+		}
+
+		private void button1_Click(object sender, EventArgs e) {
+			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
+			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE"));
+			dec.Invalidate();
+			dec.Update();
 		}
 	}
 }
