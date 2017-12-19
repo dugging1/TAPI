@@ -18,7 +18,8 @@ namespace TAPI_Libary_Testing {
 
 		private DebugEntry de;
 		private void Form1_Load(object sender, EventArgs e) {
-			de = new DebugEntry(this, Resources.Apple, "Apple", "I am an apple.");
+			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
+			de = new DebugEntry(this, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE");
 		}
 	}
 }
