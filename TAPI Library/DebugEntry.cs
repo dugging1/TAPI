@@ -23,7 +23,8 @@ namespace TAPI_Library {
 
 			pictureBox = new PictureBox() {
 				Parent=master,
-				Image=img
+				Image=img,
+				Size=img.Size
 			};
 
 			textPanel = new FlowLayoutPanel() {
