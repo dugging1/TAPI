@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TAPI_Library.Properties;
 
 namespace TAPI_Library {
 	public enum DebugEntryType { INFO, WARNING, ERROR, MESSAGE }
@@ -73,6 +74,7 @@ namespace TAPI_Library {
 				BackColor = Color.DarkGray
 			};
 
+			if (img == null) img = Resources.DefaultUserIcon;
 			icon = new PictureBox() {
 				Parent=master,
 				Image=img,
@@ -158,7 +160,6 @@ namespace TAPI_Library {
 				Parent=messagePanel,
 				Lines=mess.Split('\n'),
 				Multiline=true,
-				//Enabled=false,
 				BackColor = Color.DarkGray,
 				Location = new Point(messageLabel.Width+separationDistX, 0),
 				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
