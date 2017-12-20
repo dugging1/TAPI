@@ -27,7 +27,7 @@ namespace TAPI_Libary_Testing {
 
 		private void button1_Click(object sender, EventArgs e) {
 			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\n\n\n\nI am an apple.I am an apple.I am an apple.";
-			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE", "LOCATION HERE"));
+			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", Resources.Apple, DebugEntryType.MESSAGE, "TIME HERE", "LOCATION HERE"));
 			dec.Invalidate();
 			dec.Update();
 		}

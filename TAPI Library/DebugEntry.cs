@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TAPI_Library.Helpers;
 using TAPI_Library.Properties;
 
 namespace TAPI_Library {
@@ -30,6 +31,7 @@ namespace TAPI_Library {
 		Panel messagePanel;
 		Label messageLabel;
 		TextBox message;
+		PictureBox messagePic;
 
 		Label ETypeLabel;
 		Label EType;
@@ -53,7 +55,7 @@ namespace TAPI_Library {
 		}
 
 		/// <summary>
-		/// The constructor for the entry.
+		/// The constructor for the entry with a string message.
 		/// </summary>
 		/// <param name="P">The parent control</param>
 		/// <param name="img">The icon for the message</param>
@@ -65,6 +67,52 @@ namespace TAPI_Library {
 		public DebugEntry(Control P, Image img, string name, string mess, DebugEntryType T, string time, string location) {
 			type = T;
 
+			setupBaseUI(P, img, name, T, time, location);
+
+			message = new TextBox() {
+				Parent=messagePanel,
+				Lines=mess.Split('\n'),
+				Multiline=true,
+				BackColor = Color.DarkGray,
+				Location = new Point(messageLabel.Width+separationDistX, 0),
+				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
+				ScrollBars = ScrollBars.Vertical,
+				ReadOnly=true,
+				AcceptsReturn = true
+			};
+
+			rightAlignTextFields();
+		}
+
+		public DebugEntry(Control P, Image img, string name, Image mess, DebugEntryType T, string time, string location) {
+			type = T;
+
+			setupBaseUI(P, img, name, T, time, location);
+
+			messagePic = new PictureBox() {
+				Parent=messagePanel,
+				BackColor = Color.DarkGray,
+				Location = new Point(messageLabel.Width+separationDistX, 0),
+				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
+				Image = mess
+			};
+
+			rightAlignTextFields();
+		}
+
+		private void rightAlignTextFields() {
+			int rightLoc;
+			if (message != null) rightLoc = HMath.Max(this.name.Location.X, this.location.Location.X, Time.Location.X, EType.Location.X, message.Location.X);
+			else rightLoc = HMath.Max(this.name.Location.X, this.location.Location.X, Time.Location.X, EType.Location.X, messagePic.Location.X);
+			name.Location = new Point(rightLoc, this.name.Location.Y);
+			location.Location = new Point(rightLoc, this.location.Location.Y);
+			Time.Location = new Point(rightLoc, Time.Location.Y);
+			EType.Location = new Point(rightLoc, EType.Location.Y);
+			if (message != null) message.Location = new Point(rightLoc, message.Location.Y);
+			else messagePic.Location = new Point(rightLoc, messagePic.Location.Y);
+		}
+
+		private void setupBaseUI(Control P, Image img, string name, DebugEntryType T, string time, string location) {
 			master = new Panel() {
 				Parent = P,
 				AutoSize = true,
@@ -79,7 +127,7 @@ namespace TAPI_Library {
 				Parent=master,
 				Image=img,
 				Size=img.Size,
-				Location=new Point(10,10)
+				Location=new Point(10, 10)
 			};
 
 			textPanel = new Panel() {
@@ -98,7 +146,6 @@ namespace TAPI_Library {
 				Parent=textPanel,
 				Text=name,
 				BorderStyle= BorderStyle.FixedSingle,
-				Enabled=false,
 				Location=new Point(nameLabel.Width+separationDistX, 0),
 				Size = new Size(textPanel.Width-nameLabel.Width-separationDistX-2, 16)
 			};
@@ -155,17 +202,6 @@ namespace TAPI_Library {
 				Parent = messagePanel,
 				Text="Message: ",
 				Size = new Size(8*8, 16)
-			};
-			message = new TextBox() {
-				Parent=messagePanel,
-				Lines=mess.Split('\n'),
-				Multiline=true,
-				BackColor = Color.DarkGray,
-				Location = new Point(messageLabel.Width+separationDistX, 0),
-				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
-				ScrollBars = ScrollBars.Vertical,
-				ReadOnly=true,
-				AcceptsReturn = true
 			};
 		}
 
