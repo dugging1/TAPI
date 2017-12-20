@@ -94,7 +94,8 @@ namespace TAPI_Library {
 				BackColor = Color.DarkGray,
 				Location = new Point(messageLabel.Width+separationDistX, 0),
 				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
-				Image = mess
+				Image = mess,
+				BorderStyle = BorderStyle.FixedSingle
 			};
 
 			rightAlignTextFields();
