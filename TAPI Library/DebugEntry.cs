@@ -95,7 +95,8 @@ namespace TAPI_Library {
 				Location = new Point(messageLabel.Width+separationDistX, 0),
 				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
 				Image = mess,
-				BorderStyle = BorderStyle.FixedSingle
+				BorderStyle = BorderStyle.FixedSingle,
+				SizeMode = PictureBoxSizeMode.StretchImage
 			};
 
 			rightAlignTextFields();
