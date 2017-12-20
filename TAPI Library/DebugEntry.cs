@@ -98,6 +98,7 @@ namespace TAPI_Library {
 				BorderStyle = BorderStyle.FixedSingle,
 				SizeMode = PictureBoxSizeMode.Zoom
 			};
+			MinimumSize = new Size(MinimumSize.Width, Math.Max(messagePic.Height/3, MinimumSize.Height));
 
 			rightAlignTextFields();
 		}
