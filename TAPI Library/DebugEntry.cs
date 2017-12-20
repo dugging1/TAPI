@@ -217,7 +217,8 @@ namespace TAPI_Library {
 			Time.Size = new Size(textPanel.Width-(TimeLabel.Width+separationDistX), 16);
 			EType.Size = new Size(textPanel.Width-(ETypeLabel.Width+separationDistX), 16);
 			messagePanel.Size = new Size(master.Width-icon.Width, master.Height-(EType.Location.Y+separationDistY));
-			message.Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX, messagePanel.Height);
+			if (message != null) message.Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX, messagePanel.Height);
+			else messagePic.Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16);
 		}
 	}
 }
