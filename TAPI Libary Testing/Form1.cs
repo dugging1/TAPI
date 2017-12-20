@@ -19,14 +19,15 @@ namespace TAPI_Libary_Testing {
 		private DebugEntryController dec;
 		private void Form1_Load(object sender, EventArgs e) {
 			dec = new DebugEntryController(this, 4);
+			dec.BackColor = Color.DarkGray;
 
-			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
-			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE"));
+			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\n\n\n\nI am an apple.I am an apple.I am an apple.";
+			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE", "LOCATION HERE"));
 		}
 
 		private void button1_Click(object sender, EventArgs e) {
-			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\nI am an apple.I am an apple.I am an apple.";
-			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE"));
+			string m = "I am an apple.I am an apple.I am an apple.I am an apple.\n\n\n\nI am an apple.I am an apple.I am an apple.";
+			dec.AddEntry(new DebugEntry(dec, Resources.Apple, "Apple", m, DebugEntryType.MESSAGE, "TIME HERE", "LOCATION HERE"));
 			dec.Invalidate();
 			dec.Update();
 		}

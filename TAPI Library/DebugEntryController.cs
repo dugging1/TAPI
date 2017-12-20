@@ -23,7 +23,7 @@ namespace TAPI_Library {
 		}
 
 		public void AddEntry(DebugEntry e) {
-			if (Entries.Count == backlogLimit) Entries.RemoveAt(0);
+			if (Entries.Count == backlogLimit && backlogLimit != -1) Entries.RemoveAt(0);
 			Entries.Add(e);
 		}
 

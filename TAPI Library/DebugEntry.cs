@@ -20,13 +20,15 @@ namespace TAPI_Library {
 
 		Panel textPanel;
 
-		Panel namePanel;
 		Label nameLabel;
 		Label name;
 
+		Label locationLabel;
+		Label location;
+
 		Panel messagePanel;
 		Label messageLabel;
-		RichTextBox message;
+		TextBox message;
 
 		Label ETypeLabel;
 		Label EType;
@@ -58,7 +60,8 @@ namespace TAPI_Library {
 		/// <param name="mess">The message</param>
 		/// <param name="T">The type of message</param>
 		/// <param name="time">The time the message was sent</param>
-		public DebugEntry(Control P, Image img, string name, string mess, DebugEntryType T, string time) {
+		/// <param name="location">The location the message came from</param>
+		public DebugEntry(Control P, Image img, string name, string mess, DebugEntryType T, string time, string location) {
 			type = T;
 
 			master = new Panel() {
@@ -84,29 +87,38 @@ namespace TAPI_Library {
 				Size = new Size(master.Width-icon.Width, master.Height)
 			};
 
-			namePanel = new Panel() {
-				Parent=textPanel,
-				BackColor = Color.DarkGray,
-				Size = new Size(textPanel.Width, 16)
-			};
 			nameLabel = new Label() {
-				Parent=namePanel,
+				Parent=textPanel,
 				Text="Name: ",
 				Size = new Size(48, 16)
 			};
 			this.name = new Label() {
-				Parent=namePanel,
+				Parent=textPanel,
 				Text=name,
 				BorderStyle= BorderStyle.FixedSingle,
 				Enabled=false,
 				Location=new Point(nameLabel.Width+separationDistX, 0),
-				Size = new Size(namePanel.Width-nameLabel.Width-separationDistX, 16)
+				Size = new Size(textPanel.Width-nameLabel.Width-separationDistX-2, 16)
+			};
+
+			locationLabel = new Label() {
+				Parent=textPanel,
+				Text="Location: ",
+				Location = new Point(0, nameLabel.Location.Y+separationDistY),
+				Size = new Size(8*7, 16)
+			};
+			this.location = new Label() {
+				Parent=textPanel,
+				Text=location,
+				Location = new Point(locationLabel.Location.X+locationLabel.Width+separationDistX, locationLabel.Location.Y),
+				Size = new Size(textPanel.Width-(locationLabel.Location.X+locationLabel.Width+separationDistX), 16),
+				BorderStyle = BorderStyle.FixedSingle
 			};
 
 			TimeLabel = new Label() {
 				Parent = textPanel,
 				Text="Time: ",
-				Location = new Point(0, namePanel.Height+separationDistY),
+				Location = new Point(0, this.location.Height+separationDistY),
 				Size = new Size(8*6, 16)
 			};
 			Time = new Label() {
@@ -142,15 +154,17 @@ namespace TAPI_Library {
 				Text="Message: ",
 				Size = new Size(8*8, 16)
 			};
-			message = new RichTextBox() {
+			message = new TextBox() {
 				Parent=messagePanel,
-				Text=mess,
+				Lines=mess.Split('\n'),
 				Multiline=true,
-				Enabled=false,
+				//Enabled=false,
 				BackColor = Color.DarkGray,
 				Location = new Point(messageLabel.Width+separationDistX, 0),
-				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX, messagePanel.Height),
-				ScrollBars = RichTextBoxScrollBars.Vertical
+				Size = new Size(messagePanel.Width-messageLabel.Width-separationDistX*2-8, messagePanel.Height-16),
+				ScrollBars = ScrollBars.Vertical,
+				ReadOnly=true,
+				AcceptsReturn = true
 			};
 		}
 
@@ -159,8 +173,7 @@ namespace TAPI_Library {
 		/// </summary>
 		public void Resize() {
 			textPanel.Size = new Size(master.Width-icon.Width, master.Height);
-			namePanel.Size = new Size(textPanel.Width, 16);
-			name.Size = new Size(namePanel.Width-nameLabel.Width-separationDistX, 16);
+			name.Size = new Size(textPanel.Width-nameLabel.Width-separationDistX, 16);
 			Time.Size = new Size(textPanel.Width-(TimeLabel.Width+separationDistX), 16);
 			EType.Size = new Size(textPanel.Width-(ETypeLabel.Width+separationDistX), 16);
 			messagePanel.Size = new Size(master.Width-icon.Width, master.Height-(EType.Location.Y+separationDistY));
